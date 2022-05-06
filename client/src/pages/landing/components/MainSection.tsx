@@ -21,21 +21,19 @@ export const MainSection: React.FC = () => {
 
   const renderMobileTitle = (
     <motion.div className="flex-1 dark:text-white text-left text-4xl font-semibold my-8 leading-snug ">
-      <h1>
-        <div className="overflow-hidden py-1">
-          <motion.p variants={landingTitle}>Decentralized </motion.p>
-          <motion.p variants={landingTitle}>identity is changing </motion.p>
-        </div>
-        <div className="overflow-hidden py-1">
-          <motion.span variants={fade} className="text-6xl text-animo-coral dark:text-animo-blue filter drop-shadow">
-            the future.
-          </motion.span>
-        </div>
-      </h1>
+      <div className="overflow-hidden py-1">
+        <motion.h1 variants={landingTitle}>Decentralized </motion.h1>
+        <motion.h1 variants={landingTitle}>identity is changing </motion.h1>
+      </div>
+      <div className="overflow-hidden py-1">
+        <motion.span variants={fade} className="text-6xl text-animo-coral dark:text-animo-blue filter drop-shadow">
+          the future.
+        </motion.span>
+      </div>
       <div className="overflow-hidden">
-        <motion.h2 variants={fade} className="text-lg font-normal mt-6 dark:text-animo-lightgrey text-animo-darkgrey">
+        <motion.p variants={fade} className="text-lg font-normal mt-6 dark:text-animo-lightgrey text-animo-darkgrey">
           Experience a world where self-sovereign identity is the standard.
-        </motion.h2>
+        </motion.p>
       </div>
       <div className="flex flex-col justify-center text-base sxl:text-lg font-normal mt-6 m-auto">
         <motion.button
@@ -62,24 +60,22 @@ export const MainSection: React.FC = () => {
 
   const renderDesktopTitle = (
     <motion.div className="flex-1 text-left text-animo-black dark:text-animo-white font-semibold text-4xl lg:text-5xl xl:text-6xl m-auto">
-      <h1>
-        <div className="overflow-hidden py-1 leading-tight">
-          <motion.p variants={landingTitle}>Decentralized</motion.p>
-        </div>
-        <div className="overflow-hidden py-1 leading-tight">
-          <motion.p variants={landingTitle}>identity is changing </motion.p>
-          <motion.span variants={fade} className="text-animo-coral dark:text-animo-blue filter drop-shadow">
-            the future.
-          </motion.span>
-        </div>
-      </h1>
+      <div className="overflow-hidden py-1 leading-tight		">
+        <motion.h1 variants={landingTitle}>Decentralized</motion.h1>
+      </div>
+      <div className="overflow-hidden py-1 leading-tight		">
+        <motion.h1 variants={landingTitle}>identity is changing </motion.h1>
+        <motion.span variants={fade} className="text-animo-coral dark:text-animo-blue filter drop-shadow">
+          the future.
+        </motion.span>
+      </div>
       <div className="overflow-hidden">
-        <motion.h2
+        <motion.p
           variants={fadeDelay}
           className="text-base lg:text-lg font-normal mt-6 dark:text-animo-lightgrey text-animo-darkgrey"
         >
           Experience a world where self-sovereign identity is the standard.
-        </motion.h2>
+        </motion.p>
       </div>
       <div className="flex flex-row justify-start text-base sxl:text-lg  font-normal mt-6">
         <motion.button

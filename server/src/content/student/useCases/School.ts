@@ -53,7 +53,7 @@ export const School: UseCase = {
       requestedCredentials: [
         {
           id: uuid(),
-          name: 'Animo ID Card',
+          name: 'ID Card',
           icon: '/public/student/icon-student.svg',
           properties: ['Name', 'Date of birth'],
         },

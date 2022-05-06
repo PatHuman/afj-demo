@@ -56,7 +56,7 @@ export const Job: UseCase = {
       requestedCredentials: [
         {
           id: uuid(),
-          name: 'Animo ID Card',
+          name: 'ID Card',
           icon: '/public/millennial/icon-millennial.svg',
           properties: ['Name', 'Date of birth'],
         },

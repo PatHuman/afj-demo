@@ -18,7 +18,7 @@ import { Container } from 'typedi'
 import { CredDefService } from './controllers/CredDefService'
 import { TestLogger } from './logger'
 import { AgentCleanup } from './utils/AgentCleanup'
-import { BCOVRIN_TEST_GENESIS } from './utils/utils'
+import { BCOVRIN_BUILDER_GENESIS } from './utils/utils'
 
 const logger = new TestLogger(process.env.NODE_ENV ? LogLevel.error : LogLevel.debug)
 
@@ -35,15 +35,15 @@ process.on('unhandledRejection', (error) => {
 const run = async () => {
   const endpoint = process.env.AGENT_ENDPOINT ?? (await connect(5001))
   const agentConfig: InitConfig = {
-    label: 'Animo',
+    label: 'paramira',
     walletConfig: {
-      id: 'Animo Solutions',
-      key: process.env.AGENT_WALLET_KEY ?? 'Animo',
+      id: 'my_wallet',
+      key: process.env.AGENT_WALLET_KEY ?? 'passpass',
     },
     indyLedgers: [
       {
-        id: 'BCOVRIN_TEST_GENESIS',
-        genesisTransactions: BCOVRIN_TEST_GENESIS,
+        id: 'buildernet',
+        genesisTransactions: BCOVRIN_BUILDER_GENESIS,
         isProduction: false,
       },
     ],
@@ -73,7 +73,7 @@ const run = async () => {
     cors: true,
     routePrefix: '/demo',
   })
-
+ app.set("domain", "192.168.56.101")
   httpInbound.app.get('/', async (req, res) => {
     if (typeof req.query.c_i === 'string') {
       try {
