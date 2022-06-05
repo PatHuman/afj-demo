@@ -24,7 +24,7 @@ export class CredDefService {
    }
 
   public async getCredsDefinitions(agent: Agent){
-    const defs = [
+    const defs = [      
       "W6cLf8W11VSfzKurarYopG:3:CL:31282:ID Card",
       "W6cLf8W11VSfzKurarYopG:3:CL:31283:Credit card",
       "W6cLf8W11VSfzKurarYopG:3:CL:31284:Airplane Ticket",
@@ -191,7 +191,7 @@ export class CredDefService {
     //  "Name", "Valid until", "Date of birth"
     // ],
 
-    this.credentialDefinitions = [cd1, cd2, cd3, cd4, cd5, cd6, cd7, cd8, cd9, cd10, cd11, cd12]
+    this.credentialDefinitions = [cd1 /*, cd2, cd3, cd4, cd5, cd6, cd7, cd8, cd9, cd10, cd11, cd12*/]
   }
 
   private async createCredentialDefinition(credentialDefinitionRequest: {

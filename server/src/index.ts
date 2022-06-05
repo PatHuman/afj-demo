@@ -16,6 +16,7 @@ import { createExpressServer, useContainer } from 'routing-controllers'
 import { Container } from 'typedi'
 
 import { CredDefService } from './controllers/CredDefService'
+import { OrgService } from './services/OrgService'
 import { TestLogger } from './logger'
 import { AgentCleanup } from './utils/AgentCleanup'
 import { BCOVRIN_BUILDER_GENESIS } from './utils/utils'
@@ -33,7 +34,7 @@ process.on('unhandledRejection', (error) => {
 })
 
 const run = async () => {
-  const endpoint = process.env.AGENT_ENDPOINT ?? (await connect(5001))
+  const endpoint = process.env.AGENT_ENDPOINT ?? (await connect(7001))
   const agentConfig: InitConfig = {
     label: 'paramira',
     walletConfig: {
@@ -59,7 +60,7 @@ const run = async () => {
   const agent = new Agent(agentConfig, agentDependencies)
 
   const httpInbound = new HttpInboundTransport({
-    port: 5001,
+    port: 7001,
   })
 
   agent.registerInboundTransport(httpInbound)
@@ -73,7 +74,7 @@ const run = async () => {
     cors: true,
     routePrefix: '/demo',
   })
- app.set("domain", "192.168.56.101")
+//  app.set("domain", "192.168.56.101")
   httpInbound.app.get('/', async (req, res) => {
     if (typeof req.query.c_i === 'string') {
       try {
@@ -88,9 +89,11 @@ const run = async () => {
 
   app.use('/public', stx(__dirname + '/public'))
 
+  const  orgService = new OrgService(agent)
   const credDefService = new CredDefService(agent)
   useContainer(Container)
   Container.set(CredDefService, credDefService)
+  Container.set(OrgService, orgService)
 
   const job = AgentCleanup(agent)
   job.start()
@@ -100,7 +103,7 @@ const run = async () => {
   })
 
   await startServer(agent, {
-    port: 5000,
+    port: 7000,
     app: app,
   })
 }
